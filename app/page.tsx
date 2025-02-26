@@ -2,7 +2,7 @@
 import Head from "next/head";
 import { useState, FormEvent } from "react";
 
-export default function Home(): JSX.Element {
+export default function Home() {
   const [currentWage, setCurrentWage] = useState("");
   const [dailyCommuteCost, setDailyCommuteCost] = useState("");
   const [timeCost, setTimeCost] = useState("");
