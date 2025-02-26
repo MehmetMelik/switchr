@@ -31,7 +31,6 @@ export default function Home() {
 
     const workingDays = 200;
     const rawCommuteCost = commuteCost * workingDays;
-    // For UK tax regime above £100K, apply a multiplier of ~1.67
     const taxMultiplier = wage > 100000 ? 1.67 : 1;
     const adjustedCommuteCost = rawCommuteCost * taxMultiplier;
     const onerousCost = (onerous / 100) * wage;
@@ -46,12 +45,14 @@ export default function Home() {
         <title>Job Offer Calculator</title>
         <meta name="description" content="Calculate the required salary increase" />
       </Head>
-      <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center p-4">
         <div className="bg-white rounded-xl shadow-xl p-8 w-full max-w-lg">
-          <h2 className="text-2xl font-bold text-center mb-6">Job Offer Calculator</h2>
+          <h2 className="text-3xl font-bold text-center mb-6 text-black">
+            Job Offer Calculator
+          </h2>
           <form onSubmit={calculateExtra} className="space-y-4">
             <div>
-              <label htmlFor="currentWage" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="currentWage" className="block text-sm font-medium text-gray-800">
                 Current Annual Wage (£)
               </label>
               <input
@@ -61,11 +62,11 @@ export default function Home() {
                 value={currentWage}
                 onChange={(e) => setCurrentWage(e.target.value)}
                 required
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 block w-full border border-gray-500 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
               />
             </div>
             <div>
-              <label htmlFor="dailyCommuteCost" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="dailyCommuteCost" className="block text-sm font-medium text-gray-800">
                 Daily Commute Cost (£)
               </label>
               <input
@@ -75,11 +76,11 @@ export default function Home() {
                 value={dailyCommuteCost}
                 onChange={(e) => setDailyCommuteCost(e.target.value)}
                 required
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 block w-full border border-gray-500 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
               />
             </div>
             <div>
-              <label htmlFor="timeCost" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="timeCost" className="block text-sm font-medium text-gray-800">
                 Annual Cost of Time Spent on Commute (£)
               </label>
               <input
@@ -89,11 +90,11 @@ export default function Home() {
                 value={timeCost}
                 onChange={(e) => setTimeCost(e.target.value)}
                 required
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 block w-full border border-gray-500 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
               />
             </div>
             <div>
-              <label htmlFor="onerousPercent" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="onerousPercent" className="block text-sm font-medium text-gray-800">
                 Extra Job Onerousness (%)
               </label>
               <input
@@ -103,11 +104,11 @@ export default function Home() {
                 value={onerousPercent}
                 onChange={(e) => setOnerousPercent(e.target.value)}
                 required
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 block w-full border border-gray-500 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
               />
             </div>
             <div>
-              <label htmlFor="jobChangeCost" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="jobChangeCost" className="block text-sm font-medium text-gray-800">
                 Cost of Changing Jobs (£)
               </label>
               <input
@@ -117,18 +118,18 @@ export default function Home() {
                 value={jobChangeCost}
                 onChange={(e) => setJobChangeCost(e.target.value)}
                 required
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 block w-full border border-gray-500 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
               />
             </div>
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md shadow transition-colors"
+              className="w-full py-2 px-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md shadow transition-colors"
             >
               Calculate
             </button>
           </form>
           {result && (
-            <div className="mt-6 p-4 bg-indigo-100 text-indigo-700 rounded-md text-center">
+            <div className="mt-6 p-4 bg-green-100 text-green-800 rounded-md text-center font-bold">
               Required salary increase: £{result}
             </div>
           )}
